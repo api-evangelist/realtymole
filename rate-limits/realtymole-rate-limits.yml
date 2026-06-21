@@ -1,0 +1,61 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: RealtyMole
+providerId: realtymole
+created: '2026-06-21'
+modified: '2026-06-21'
+reconciled: false
+tags:
+- Real Estate
+- Property Data
+- Rental Estimate
+- Valuation
+- Listings
+- Rate Limiting
+- Quotas
+- Throttling
+description: >-
+  The legacy Realty Mole Property API is metered through RapidAPI, which
+  enforces a monthly request quota per subscription tier plus a per-second
+  rate limit set by the API publisher. Requests over the monthly quota are
+  either billed as overage or hard-blocked depending on the tier. The
+  successor RentCast API meters by monthly request quota per plan with
+  per-request overage. Specific per-second and per-tier values are not
+  reconciled in this artifact.
+notes: >-
+  Verify the current per-second rate limit and per-tier monthly quotas on the
+  RapidAPI pricing/endpoints pages (legacy Realty Mole) or in the RentCast API
+  dashboard (successor). Values change as accounts move between tiers.
+sources:
+- https://rapidapi.com/realtymole/api/realty-mole-property-api/pricing
+- https://www.rentcast.io/api
+- https://developers.rentcast.io/reference/realty-mole-migration-guide
+responseCodes:
+  throttled: 429
+limits:
+- name: Monthly Request Quota
+  scope: account
+  metric: requests
+  limit: see provider documentation
+  notes: Per-tier monthly quota enforced by RapidAPI (legacy) / RentCast plan (successor).
+- name: Per-Second Rate Limit
+  scope: account
+  metric: requests
+  limit: see provider documentation
+  notes: RapidAPI publisher-set requests-per-second cap on the Realty Mole API.
+- name: Overage
+  scope: account
+  metric: requests
+  limit: per-request overage above quota
+  notes: Above-quota requests billed per request on paid tiers, or blocked on free tier.
+policies:
+- name: Tiered Quotas
+  description: Monthly request allotments increase across subscription tiers; overage rate decreases.
+- name: Backoff Strategy
+  description: Clients should implement exponential backoff with jitter and honor Retry-After on 429 responses.
+- name: Migration
+  description: Realty Mole is legacy; migrate to RentCast (api.rentcast.io/v1) for current limits and support.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

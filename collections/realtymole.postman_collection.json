@@ -1,0 +1,314 @@
+{
+  "item": [
+    {
+      "id": "9c1f0a11-1111-4a01-9a01-property-records",
+      "name": "Property Records",
+      "description": {
+        "content": "Property record lookups by address or coordinates.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a1b2c3d4-0001-4a01-9a01-getproperties",
+          "name": "Look up property records",
+          "request": {
+            "name": "Look up property records",
+            "description": {
+              "content": "Returns property records matching an address or a latitude/longitude pair.",
+              "type": "text/plain"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/properties?address=5500 Grand Lake Dr, San Antonio, TX, 78244",
+              "path": [
+                "properties"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "address",
+                  "value": "5500 Grand Lake Dr, San Antonio, TX, 78244"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "X-RapidAPI-Key",
+                "value": "{{rapidApiKey}}"
+              },
+              {
+                "key": "X-RapidAPI-Host",
+                "value": "realty-mole-property-api.p.rapidapi.com"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": []
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "9c1f0a11-2222-4a01-9a01-rental-estimate",
+      "name": "Rental Estimate",
+      "description": {
+        "content": "AVM long-term rent estimate with comparable properties.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a1b2c3d4-0002-4a01-9a01-getrentalprice",
+          "name": "Estimate long-term rent",
+          "request": {
+            "name": "Estimate long-term rent",
+            "description": {
+              "content": "Returns an estimated monthly rent, a low/high range, and comparable rental properties.",
+              "type": "text/plain"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/rentalPrice?address=5500 Grand Lake Dr, San Antonio, TX, 78244&compCount=5",
+              "path": [
+                "rentalPrice"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "address",
+                  "value": "5500 Grand Lake Dr, San Antonio, TX, 78244"
+                },
+                {
+                  "key": "compCount",
+                  "value": "5"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "X-RapidAPI-Key",
+                "value": "{{rapidApiKey}}"
+              },
+              {
+                "key": "X-RapidAPI-Host",
+                "value": "realty-mole-property-api.p.rapidapi.com"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": []
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "9c1f0a11-3333-4a01-9a01-sale-estimate",
+      "name": "Sale Estimate",
+      "description": {
+        "content": "AVM sale-price (value) estimate with comparable sales.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a1b2c3d4-0003-4a01-9a01-getsaleprice",
+          "name": "Estimate sale price (value)",
+          "request": {
+            "name": "Estimate sale price (value)",
+            "description": {
+              "content": "Returns an estimated sale price (value), a low/high range, and comparable sold properties.",
+              "type": "text/plain"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/salePrice?address=5500 Grand Lake Dr, San Antonio, TX, 78244&compCount=5",
+              "path": [
+                "salePrice"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "address",
+                  "value": "5500 Grand Lake Dr, San Antonio, TX, 78244"
+                },
+                {
+                  "key": "compCount",
+                  "value": "5"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "X-RapidAPI-Key",
+                "value": "{{rapidApiKey}}"
+              },
+              {
+                "key": "X-RapidAPI-Host",
+                "value": "realty-mole-property-api.p.rapidapi.com"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": []
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "9c1f0a11-4444-4a01-9a01-listings",
+      "name": "Listings",
+      "description": {
+        "content": "Active for-sale and for-rent listings near a location.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a1b2c3d4-0004-4a01-9a01-getsalelistings",
+          "name": "Active for-sale listings",
+          "request": {
+            "name": "Active for-sale listings",
+            "description": {
+              "content": "Returns active for-sale listings near a location.",
+              "type": "text/plain"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/saleListings?latitude=29.475962&longitude=-98.351442&radius=5",
+              "path": [
+                "saleListings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "latitude",
+                  "value": "29.475962"
+                },
+                {
+                  "key": "longitude",
+                  "value": "-98.351442"
+                },
+                {
+                  "key": "radius",
+                  "value": "5"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "X-RapidAPI-Key",
+                "value": "{{rapidApiKey}}"
+              },
+              {
+                "key": "X-RapidAPI-Host",
+                "value": "realty-mole-property-api.p.rapidapi.com"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": []
+        },
+        {
+          "id": "a1b2c3d4-0005-4a01-9a01-getrentallistings",
+          "name": "Active for-rent listings",
+          "request": {
+            "name": "Active for-rent listings",
+            "description": {
+              "content": "Returns active for-rent listings near a location.",
+              "type": "text/plain"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/rentalListings?latitude=29.475962&longitude=-98.351442&radius=5",
+              "path": [
+                "rentalListings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "latitude",
+                  "value": "29.475962"
+                },
+                {
+                  "key": "longitude",
+                  "value": "-98.351442"
+                },
+                {
+                  "key": "radius",
+                  "value": "5"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "X-RapidAPI-Key",
+                "value": "{{rapidApiKey}}"
+              },
+              {
+                "key": "X-RapidAPI-Host",
+                "value": "realty-mole-property-api.p.rapidapi.com"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": []
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://realty-mole-property-api.p.rapidapi.com",
+      "key": "baseUrl"
+    },
+    {
+      "type": "string",
+      "value": "YOUR_RAPIDAPI_KEY",
+      "key": "rapidApiKey"
+    }
+  ],
+  "info": {
+    "_postman_id": "b7e2f4a0-realtymole-0000-collection00001",
+    "name": "Realty Mole Property API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Realty Mole Property API (legacy, distributed via RapidAPI; superseded by RentCast at https://api.rentcast.io/v1). Authenticate with X-RapidAPI-Key and X-RapidAPI-Host: realty-mole-property-api.p.rapidapi.com.",
+      "type": "text/plain"
+    }
+  }
+}

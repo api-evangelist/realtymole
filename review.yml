@@ -1,0 +1,86 @@
+aid: realtymole
+name: RealtyMole
+review:
+  question: Is the standalone Realty Mole Property API still the current product, or has it been superseded?
+  answer: false
+  date: '2026-06-21'
+  reviewer: API Evangelist
+  statusNote: |
+    The standalone Realty Mole Property API is NOT the current product. RealtyMole
+    is the predecessor to RentCast (rentcast.io). The legacy Realty Mole Property
+    API is distributed through RapidAPI
+    (https://rapidapi.com/realtymole/api/realty-mole-property-api) and is now
+    legacy/superseded. RentCast publishes a dedicated Realty Mole Migration Guide
+    (https://developers.rentcast.io/reference/realty-mole-migration-guide)
+    directing existing users to the RentCast API. New integrations should target
+    RentCast at https://api.rentcast.io/v1.
+findings:
+  summary: |
+    RealtyMole (Realty Mole Property API) is a US real-estate / property data API
+    historically distributed on RapidAPI. It exposes property records, AVM rental
+    estimates, AVM sale-price (value) estimates, and active for-sale / for-rent
+    listings, queried by address or latitude/longitude. The same company and data
+    platform now operate as RentCast, which is the actively developed, documented
+    successor. This catalog documents the legacy Realty Mole RapidAPI surface and
+    notes the RentCast relationship and successor status throughout.
+  rentCastRelationship:
+    predecessor: RealtyMole (Realty Mole Property API)
+    successor: RentCast
+    successorBaseURL: https://api.rentcast.io/v1
+    successorAuth: X-Api-Key header
+    migrationGuide: https://developers.rentcast.io/reference/realty-mole-migration-guide
+    status: Legacy Realty Mole API superseded by RentCast; new integrations should use RentCast.
+  transports:
+    - protocol: REST
+      scheme: https
+      baseURL: https://realty-mole-property-api.p.rapidapi.com
+      auth: RapidAPI headers (X-RapidAPI-Key, X-RapidAPI-Host)
+      documented: true
+      note: Legacy Realty Mole Property API host on RapidAPI.
+    - protocol: REST
+      scheme: https
+      baseURL: https://api.rentcast.io/v1
+      auth: X-Api-Key header
+      documented: true
+      note: Current successor (RentCast) host.
+  endpointsLegacyRealtyMole:
+    - GET https://realty-mole-property-api.p.rapidapi.com/properties
+    - GET https://realty-mole-property-api.p.rapidapi.com/rentalPrice
+    - GET https://realty-mole-property-api.p.rapidapi.com/salePrice
+    - GET https://realty-mole-property-api.p.rapidapi.com/saleListings
+    - GET https://realty-mole-property-api.p.rapidapi.com/rentalListings
+  reconciliationNotes: |
+    Endpoint paths reflect the widely documented Realty Mole Property API surface
+    on RapidAPI. Exact request/response field names, per-tier pricing, and
+    per-second rate limits are gated behind the RapidAPI JS-rendered console and
+    were not directly machine-reconciled; plans, rate-limits, and finops
+    artifacts are marked reconciled:false. RentCast plan figures (Developer $0/50,
+    Foundation $74/1k, Growth $199/5k, Scale $449/25k requests per month) were
+    captured from rentcast.io and should be re-verified at reconciliation.
+sources:
+  - url: https://rapidapi.com/realtymole/api/realty-mole-property-api
+    type: Documentation
+    note: Legacy Realty Mole Property API listing on RapidAPI.
+  - url: https://rapidapi.com/realtymole/api/realty-mole-property-api/details
+    type: APIReference
+    note: API details / how-to-use page on RapidAPI.
+  - url: https://rapidapi.com/realtymole/api/realty-mole-property-api/pricing
+    type: Pricing
+    note: RapidAPI tiered/freemium pricing for the legacy API.
+  - url: https://developers.rentcast.io/reference/realty-mole-migration-guide
+    type: Documentation
+    note: RentCast's official migration guide for legacy Realty Mole users.
+  - url: https://www.rentcast.io/api
+    type: Documentation
+    note: RentCast API (successor) overview, endpoints, base URL, and pricing.
+actions:
+  apisYmlUpdated: true
+  reason: |
+    Documented RealtyMole as a legacy real-estate/property data API with four
+    API surfaces (Property Records, Rental Estimate, Sale Estimate, Listings)
+    over the RapidAPI host, with the RentCast successor relationship and
+    migration path noted in apis.yml, README, OpenAPI, plans, rate-limits, and
+    finops. No WebSocket or event surface is documented, so none was modeled.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

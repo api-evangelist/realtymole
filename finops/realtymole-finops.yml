@@ -1,0 +1,92 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: RealtyMole
+providerId: realtymole
+created: '2026-06-21'
+modified: '2026-06-21'
+reconciled: false
+tags:
+- Real Estate
+- Property Data
+- Rental Estimate
+- Valuation
+- Listings
+- FinOps
+- Cost Management
+- FOCUS
+description: >-
+  FinOps view of Realty Mole Property API spend. The legacy Realty Mole API is
+  billed through RapidAPI as a monthly subscription tier plus per-request
+  overage; every endpoint call (property records, rent estimate, sale estimate,
+  listings) is a metered request. The successor RentCast API bills a flat
+  monthly plan fee plus per-request overage. Because each successful API call
+  consumes quota, request volume is the primary cost driver.
+notes: >-
+  Realty Mole is legacy; new spend should be planned against RentCast plans.
+  Verify current per-request overage rates and monthly plan fees on the
+  RapidAPI pricing page and rentcast.io during reconciliation.
+sources:
+- https://rapidapi.com/realtymole/api/realty-mole-property-api/pricing
+- https://www.rentcast.io/api
+- https://developers.rentcast.io/reference/realty-mole-migration-guide
+- https://focus.finops.org/focus-specification/v1-3/
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+publisherName: RealtyMole
+serviceCategory: Real Estate and Property Data
+billingModel:
+  pricingCategory: Subscription plus Usage Overage
+  billingFrequency: Monthly
+  billingCurrency: USD
+  chargeCategories:
+  - Usage
+  - Purchase
+focusColumns:
+  ServiceName: Realty Mole Property API
+  ServiceCategory: Real Estate and Property Data
+  ProviderName: RealtyMole
+  PublisherName: RealtyMole
+  InvoiceIssuerName: RapidAPI
+  BillingCurrency: USD
+  ChargeCategory: Usage
+  PricingCategory: Usage-Based
+meters:
+- name: api_requests
+  description: Billable API calls across all endpoints; each call consumes monthly quota.
+  unit: requests
+  aggregation: sum
+  dimensions:
+  - account
+  - endpoint
+  - plan
+- name: overage_requests
+  description: Requests above the monthly plan quota, billed at the per-request overage rate.
+  unit: requests
+  aggregation: sum
+  dimensions:
+  - account
+  - plan
+- name: subscription_fee
+  description: Flat monthly subscription/plan fee for the selected tier.
+  unit: months
+  aggregation: sum
+  dimensions:
+  - account
+  - plan
+principles:
+- name: Visibility
+  description: Track request counts per endpoint and tier from the RapidAPI / RentCast dashboard; watch quota burn-down.
+- name: Allocation
+  description: Use separate API keys per workload/team to attribute request spend to cost centers.
+- name: Optimization
+  description: Cache property records and estimates, deduplicate address lookups, and right-size the monthly plan to expected request volume to avoid overage.
+- name: Accountability
+  description: Assign an owner per key, set quota alerts, and review monthly request spend against budget; plan migration off legacy Realty Mole to RentCast.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

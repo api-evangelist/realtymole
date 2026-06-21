@@ -1,0 +1,104 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Realty Mole Property API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-RapidAPI-Key",
+      "value": "{{rapidApiKey}}",
+      "in": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Property Records",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Look up property records",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://realty-mole-property-api.p.rapidapi.com/properties"
+          },
+          "docs": "Returns property records matching an address or a latitude/longitude pair."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Rental Estimate",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Estimate long-term rent",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://realty-mole-property-api.p.rapidapi.com/rentalPrice"
+          },
+          "docs": "Returns an estimated monthly rent, a low/high range, and comparable rental properties."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Sale Estimate",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Estimate sale price (value)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://realty-mole-property-api.p.rapidapi.com/salePrice"
+          },
+          "docs": "Returns an estimated sale price (value), a low/high range, and comparable sold properties."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Listings",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Active for-sale listings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://realty-mole-property-api.p.rapidapi.com/saleListings"
+          },
+          "docs": "Returns active for-sale listings near a location."
+        },
+        {
+          "info": {
+            "name": "Active for-rent listings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://realty-mole-property-api.p.rapidapi.com/rentalListings"
+          },
+          "docs": "Returns active for-rent listings near a location."
+        }
+      ]
+    }
+  ]
+}

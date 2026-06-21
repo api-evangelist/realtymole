@@ -1,0 +1,152 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: RealtyMole
+providerId: realtymole
+created: '2026-06-21'
+modified: '2026-06-21'
+reconciled: false
+tags:
+- Real Estate
+- Property Data
+- Rental Estimate
+- Valuation
+- Listings
+- Plans
+description: >-
+  The Realty Mole Property API is sold through RapidAPI on a freemium,
+  tiered-subscription model: a free tier with a small monthly request quota
+  plus paid monthly tiers with larger quotas and per-request overage charges.
+  Exact tier names, quotas, and prices are set on the RapidAPI pricing page
+  and are not reconciled in this artifact. Because Realty Mole is legacy and
+  superseded by RentCast, the RentCast plan structure is documented below as
+  the current, authoritative successor pricing.
+notes: >-
+  Realty Mole RapidAPI tier prices and quotas change and were not directly
+  reconciled; verify on the RapidAPI pricing page. RentCast plan figures
+  below were captured from rentcast.io and should be re-verified at
+  reconciliation. New integrations should use RentCast.
+sources:
+- https://rapidapi.com/realtymole/api/realty-mole-property-api/pricing
+- https://www.rentcast.io/api
+- https://developers.rentcast.io/reference/realty-mole-migration-guide
+plans:
+- id: realtymole-rapidapi-freemium
+  name: RapidAPI Freemium (Legacy)
+  type: usage
+  description: >-
+    Tiered RapidAPI subscription for the legacy Realty Mole Property API: a
+    free tier with a limited monthly request quota and paid monthly tiers with
+    higher quotas and per-request overages. Each API call (property records,
+    rent estimate, sale estimate, listings) counts against the quota.
+  entries:
+  - label: Monthly Requests
+    name: rapidapi_requests
+    type: usage
+    metric: requests
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: see RapidAPI pricing page (free tier plus paid monthly tiers with overage)
+    userMultiplied: false
+  elements:
+  - name: Property Records
+  - name: Rental Estimate
+  - name: Sale Estimate
+  - name: Listings
+- id: rentcast-developer
+  name: RentCast Developer (Successor)
+  type: usage
+  description: >-
+    Free RentCast tier (successor to Realty Mole). Includes a small monthly
+    request allotment with per-request overage.
+  entries:
+  - label: Included Requests
+    name: rentcast_developer_requests
+    type: usage
+    metric: requests
+    limit: 50
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: $0 (then $0.20 per request overage)
+    userMultiplied: false
+  elements:
+  - name: Property Records
+  - name: Valuation Estimates
+  - name: Rental Estimates
+  - name: Listings
+  - name: Market Data
+- id: rentcast-foundation
+  name: RentCast Foundation (Successor)
+  type: usage
+  description: >-
+    Paid RentCast tier with a larger monthly request allotment and lower
+    overage rate.
+  entries:
+  - label: Included Requests
+    name: rentcast_foundation_requests
+    type: usage
+    metric: requests
+    limit: 1000
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: $74/month (then $0.06 per request overage)
+    userMultiplied: false
+  elements:
+  - name: Property Records
+  - name: Valuation Estimates
+  - name: Rental Estimates
+  - name: Listings
+  - name: Market Data
+- id: rentcast-growth
+  name: RentCast Growth (Successor)
+  type: usage
+  description: >-
+    Paid RentCast tier with a higher monthly request allotment and lower
+    overage rate.
+  entries:
+  - label: Included Requests
+    name: rentcast_growth_requests
+    type: usage
+    metric: requests
+    limit: 5000
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: $199/month (then $0.03 per request overage)
+    userMultiplied: false
+  elements:
+  - name: Property Records
+  - name: Valuation Estimates
+  - name: Rental Estimates
+  - name: Listings
+  - name: Market Data
+- id: rentcast-scale
+  name: RentCast Scale (Successor)
+  type: usage
+  description: >-
+    Paid RentCast tier with the highest standard monthly request allotment
+    and lowest overage rate.
+  entries:
+  - label: Included Requests
+    name: rentcast_scale_requests
+    type: usage
+    metric: requests
+    limit: 25000
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: $449/month (then $0.015 per request overage)
+    userMultiplied: false
+  elements:
+  - name: Property Records
+  - name: Valuation Estimates
+  - name: Rental Estimates
+  - name: Listings
+  - name: Market Data
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com
