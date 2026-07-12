@@ -1,0 +1,17 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/realtymole-openapi.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+schemes:
+- name: RapidAPIKey
+  type: apiKey
+  in: header
+  parameter: X-RapidAPI-Key
+  description: 'RapidAPI subscription key. Requests must also send the header `X-RapidAPI-Host:
+    realty-mole-property-api.p.rapidapi.com`.'
+  sources:
+  - openapi/realtymole-openapi.yml

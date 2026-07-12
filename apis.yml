@@ -90,6 +90,10 @@ apis:
     or latitude/longitude with a radius), returning listing price, property attributes,
     days on market, and listing status.
 common:
+- type: DomainSecurity
+  url: security/realtymole-domain-security.yml
+- type: Authentication
+  url: authentication/realtymole-authentication.yml
 - type: LinkedIn
   url: https://www.linkedin.com/company/rentcast
 - type: Website
