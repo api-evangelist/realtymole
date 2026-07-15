@@ -90,6 +90,8 @@ apis:
     or latitude/longitude with a radius), returning listing price, property attributes,
     days on market, and listing status.
 common:
+- type: AgenticAccess
+  url: agentic-access/realtymole-agentic-access.yml
 - type: DomainSecurity
   url: security/realtymole-domain-security.yml
 - type: Authentication
