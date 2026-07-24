@@ -1,0 +1,147 @@
+openapi: 3.0.1
+info:
+  title: Realty Mole Property Listings Rental Estimate API
+  description: 'The Realty Mole Property API provides US real-estate and property data: property records, AVM-based rental estimates and sale-price (value) estimates with comparable properties, and active for-sale and for-rent listings, queried by address or latitude/longitude. The API is distributed through RapidAPI and authenticated with RapidAPI headers (X-RapidAPI-Key, X-RapidAPI-Host). STATUS: The standalone Realty Mole Property API is legacy and superseded by the RentCast API (https://api.rentcast.io/v1). New integrations should use RentCast; existing Realty Mole users should follow the Realty Mole Migration Guide (https://developers.rentcast.io/reference/realty-mole-migration-guide).'
+  termsOfService: https://rapidapi.com/realtymole/api/realty-mole-property-api
+  contact:
+    name: RealtyMole / RentCast
+    url: https://www.rentcast.io/api
+  version: '1.0'
+servers:
+- url: https://realty-mole-property-api.p.rapidapi.com
+  description: Realty Mole Property API host on RapidAPI (legacy; superseded by RentCast)
+security:
+- RapidAPIKey: []
+tags:
+- name: Rental Estimate
+  description: AVM long-term rent estimate with comparable properties.
+paths:
+  /rentalPrice:
+    get:
+      operationId: getRentalPrice
+      tags:
+      - Rental Estimate
+      summary: Estimate long-term rent
+      description: Returns an estimated long-term monthly rent for the target property, a low/high range, and the comparable rental properties used by the AVM algorithm.
+      parameters:
+      - name: address
+        in: query
+        required: false
+        description: Target property address.
+        schema:
+          type: string
+      - name: latitude
+        in: query
+        required: false
+        schema:
+          type: number
+          format: double
+      - name: longitude
+        in: query
+        required: false
+        schema:
+          type: number
+          format: double
+      - name: propertyType
+        in: query
+        required: false
+        description: Property type, e.g. Single Family, Condo, Apartment, Townhouse.
+        schema:
+          type: string
+      - name: bedrooms
+        in: query
+        required: false
+        schema:
+          type: number
+      - name: bathrooms
+        in: query
+        required: false
+        schema:
+          type: number
+      - name: squareFootage
+        in: query
+        required: false
+        schema:
+          type: number
+      - name: compCount
+        in: query
+        required: false
+        description: Number of comparable properties to return (capped by the API).
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Rent estimate with range and comparables.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RentEstimate'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+components:
+  responses:
+    RateLimited:
+      description: Plan request quota or rate limit exceeded.
+    Unauthorized:
+      description: Missing or invalid RapidAPI key.
+  schemas:
+    Comparable:
+      type: object
+      description: A comparable property contributing to an estimate.
+      properties:
+        formattedAddress:
+          type: string
+        price:
+          type: number
+        propertyType:
+          type: string
+        bedrooms:
+          type: number
+        bathrooms:
+          type: number
+        squareFootage:
+          type: number
+        latitude:
+          type: number
+          format: double
+        longitude:
+          type: number
+          format: double
+        distance:
+          type: number
+          description: Distance in miles from the target property.
+        daysOld:
+          type: integer
+        correlation:
+          type: number
+          description: Similarity weighting applied to the comparable.
+    RentEstimate:
+      type: object
+      description: Long-term rent estimate with range and comparable properties.
+      properties:
+        rent:
+          type: number
+          description: Estimated monthly rent.
+        rentRangeLow:
+          type: number
+        rentRangeHigh:
+          type: number
+        latitude:
+          type: number
+          format: double
+        longitude:
+          type: number
+          format: double
+        listings:
+          type: array
+          description: Comparable rental properties used by the estimate.
+          items:
+            $ref: '#/components/schemas/Comparable'
+  securitySchemes:
+    RapidAPIKey:
+      type: apiKey
+      in: header
+      name: X-RapidAPI-Key
+      description: 'RapidAPI subscription key. Requests must also send the header `X-RapidAPI-Host: realty-mole-property-api.p.rapidapi.com`.'

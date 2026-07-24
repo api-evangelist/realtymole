@@ -1,0 +1,129 @@
+openapi: 3.0.1
+info:
+  title: Realty Mole Property Listings Property Records API
+  description: 'The Realty Mole Property API provides US real-estate and property data: property records, AVM-based rental estimates and sale-price (value) estimates with comparable properties, and active for-sale and for-rent listings, queried by address or latitude/longitude. The API is distributed through RapidAPI and authenticated with RapidAPI headers (X-RapidAPI-Key, X-RapidAPI-Host). STATUS: The standalone Realty Mole Property API is legacy and superseded by the RentCast API (https://api.rentcast.io/v1). New integrations should use RentCast; existing Realty Mole users should follow the Realty Mole Migration Guide (https://developers.rentcast.io/reference/realty-mole-migration-guide).'
+  termsOfService: https://rapidapi.com/realtymole/api/realty-mole-property-api
+  contact:
+    name: RealtyMole / RentCast
+    url: https://www.rentcast.io/api
+  version: '1.0'
+servers:
+- url: https://realty-mole-property-api.p.rapidapi.com
+  description: Realty Mole Property API host on RapidAPI (legacy; superseded by RentCast)
+security:
+- RapidAPIKey: []
+tags:
+- name: Property Records
+  description: Property record lookups by address or coordinates.
+paths:
+  /properties:
+    get:
+      operationId: getProperties
+      tags:
+      - Property Records
+      summary: Look up property records
+      description: Returns property records matching an address or a latitude/longitude pair, including property attributes and the most recent assessor/sale data available for the property.
+      parameters:
+      - name: address
+        in: query
+        required: false
+        description: Full property address (street, city, state, zip).
+        schema:
+          type: string
+      - name: latitude
+        in: query
+        required: false
+        schema:
+          type: number
+          format: double
+      - name: longitude
+        in: query
+        required: false
+        schema:
+          type: number
+          format: double
+      - name: radius
+        in: query
+        required: false
+        description: Search radius in miles when querying by coordinates.
+        schema:
+          type: number
+          format: double
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: A list of property records.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PropertyRecord'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+components:
+  schemas:
+    PropertyRecord:
+      type: object
+      description: A property record with attributes and last-known sale/assessor data.
+      properties:
+        id:
+          type: string
+        formattedAddress:
+          type: string
+        addressLine1:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        zipCode:
+          type: string
+        county:
+          type: string
+        latitude:
+          type: number
+          format: double
+        longitude:
+          type: number
+          format: double
+        propertyType:
+          type: string
+        bedrooms:
+          type: number
+        bathrooms:
+          type: number
+        squareFootage:
+          type: number
+        lotSize:
+          type: number
+        yearBuilt:
+          type: integer
+        lastSalePrice:
+          type: number
+        lastSaleDate:
+          type: string
+          format: date
+        owner:
+          type: object
+          additionalProperties: true
+        features:
+          type: object
+          additionalProperties: true
+  responses:
+    RateLimited:
+      description: Plan request quota or rate limit exceeded.
+    Unauthorized:
+      description: Missing or invalid RapidAPI key.
+  securitySchemes:
+    RapidAPIKey:
+      type: apiKey
+      in: header
+      name: X-RapidAPI-Key
+      description: 'RapidAPI subscription key. Requests must also send the header `X-RapidAPI-Host: realty-mole-property-api.p.rapidapi.com`.'
