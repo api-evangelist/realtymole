@@ -8,7 +8,20 @@ description: RealtyMole (Realty Mole Property API) is a US real-estate and prope
   active for-sale and for-rent listings by address or latitude/longitude. RealtyMole
   is the predecessor product to RentCast (rentcast.io); the standalone Realty Mole
   Property API on RapidAPI is legacy and superseded by the RentCast API.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/realtymole.png
 tags:
 - Real Estate
 - Property Data
@@ -19,76 +32,62 @@ created: '2026-06-21'
 modified: '2026-06-21'
 specificationVersion: '0.19'
 apis:
-- aid: realtymole:property-records
-  name: RealtyMole Property Records API
-  tags:
-  - Property Data
-  - Property Records
-  - Real Estate
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://rapidapi.com/realtymole/api/realty-mole-property-api
-  baseURL: https://realty-mole-property-api.p.rapidapi.com
-  properties:
-  - url: https://rapidapi.com/realtymole/api/realty-mole-property-api
-    type: Documentation
-  - url: https://rapidapi.com/realtymole/api/realty-mole-property-api/details
-    type: APIReference
-  - url: openapi/realtymole-openapi.yml
-    type: OpenAPI
-  description: Look up residential property records by address or latitude/longitude,
-    returning attributes such as property type, bedrooms, bathrooms, square footage,
-    lot size, year built, last sale price/date, owner and assessor data.
-- aid: realtymole:rental-estimate
-  name: RealtyMole Rental Estimate API
-  tags:
-  - Rental Estimate
-  - AVM
-  - Comparables
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://rapidapi.com/realtymole/api/realty-mole-property-api
-  baseURL: https://realty-mole-property-api.p.rapidapi.com
-  properties:
-  - url: https://rapidapi.com/realtymole/api/realty-mole-property-api
-    type: Documentation
-  - url: openapi/realtymole-openapi.yml
-    type: OpenAPI
-  description: Estimate the long-term monthly rent for a target property by address
-    or latitude/longitude using a comparable-properties (AVM) algorithm, returning
-    a rent estimate, a low/high range, and the comparable listings used.
-- aid: realtymole:sale-estimate
-  name: RealtyMole Sale Estimate API
-  tags:
-  - Valuation
-  - Sale Price
-  - AVM
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://rapidapi.com/realtymole/api/realty-mole-property-api
-  baseURL: https://realty-mole-property-api.p.rapidapi.com
-  properties:
-  - url: https://rapidapi.com/realtymole/api/realty-mole-property-api
-    type: Documentation
-  - url: openapi/realtymole-openapi.yml
-    type: OpenAPI
-  description: Estimate the market sale price (value) of a target property by address
-    or latitude/longitude using a comparable-sales (AVM) algorithm, returning a price
-    estimate, a low/high range, and the comparable sales used.
-- aid: realtymole:listings
+- aid: realtymole:realtymole-listings-api
   name: RealtyMole Listings API
+  description: Active for-sale and for-rent listings near a location.
+  humanURL: https://rapidapi.com/realtymole/api/realty-mole-property-api
+  baseURL: https://realty-mole-property-api.p.rapidapi.com
   tags:
   - Listings
-  - For Sale
-  - For Rent
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  properties:
+  - type: OpenAPI
+    url: openapi/realtymole-listings-api-openapi.yml
+  - type: Documentation
+    url: https://rapidapi.com/realtymole/api/realty-mole-property-api
+  - type: APIReference
+    url: https://rapidapi.com/realtymole/api/realty-mole-property-api/details
+- aid: realtymole:realtymole-property-records-api
+  name: RealtyMole Property Records API
+  description: Property record lookups by address or coordinates.
   humanURL: https://rapidapi.com/realtymole/api/realty-mole-property-api
   baseURL: https://realty-mole-property-api.p.rapidapi.com
+  tags:
+  - Property Records
   properties:
-  - url: https://rapidapi.com/realtymole/api/realty-mole-property-api
-    type: Documentation
-  - url: openapi/realtymole-openapi.yml
-    type: OpenAPI
-  description: Retrieve active for-sale and for-rent listings around a location (address
-    or latitude/longitude with a radius), returning listing price, property attributes,
-    days on market, and listing status.
+  - type: OpenAPI
+    url: openapi/realtymole-property-records-api-openapi.yml
+  - type: Documentation
+    url: https://rapidapi.com/realtymole/api/realty-mole-property-api
+  - type: APIReference
+    url: https://rapidapi.com/realtymole/api/realty-mole-property-api/details
+- aid: realtymole:realtymole-rental-estimate-api
+  name: RealtyMole Rental Estimate API
+  description: AVM long-term rent estimate with comparable properties.
+  humanURL: https://rapidapi.com/realtymole/api/realty-mole-property-api
+  baseURL: https://realty-mole-property-api.p.rapidapi.com
+  tags:
+  - Rental Estimate
+  properties:
+  - type: OpenAPI
+    url: openapi/realtymole-rental-estimate-api-openapi.yml
+  - type: Documentation
+    url: https://rapidapi.com/realtymole/api/realty-mole-property-api
+  - type: APIReference
+    url: https://rapidapi.com/realtymole/api/realty-mole-property-api/details
+- aid: realtymole:realtymole-sale-estimate-api
+  name: RealtyMole Sale Estimate API
+  description: AVM sale-price (value) estimate with comparable sales.
+  humanURL: https://rapidapi.com/realtymole/api/realty-mole-property-api
+  baseURL: https://realty-mole-property-api.p.rapidapi.com
+  tags:
+  - Sale Estimate
+  properties:
+  - type: OpenAPI
+    url: openapi/realtymole-sale-estimate-api-openapi.yml
+  - type: Documentation
+    url: https://rapidapi.com/realtymole/api/realty-mole-property-api
+  - type: APIReference
+    url: https://rapidapi.com/realtymole/api/realty-mole-property-api/details
 common:
 - type: AgenticAccess
   url: agentic-access/realtymole-agentic-access.yml
