@@ -1,0 +1,506 @@
+openapi: 3.0.1
+info:
+  title: Realty Mole Property API
+  description: >-
+    The Realty Mole Property API provides US real-estate and property data:
+    property records, AVM-based rental estimates and sale-price (value)
+    estimates with comparable properties, and active for-sale and for-rent
+    listings, queried by address or latitude/longitude. The API is distributed
+    through RapidAPI and authenticated with RapidAPI headers (X-RapidAPI-Key,
+    X-RapidAPI-Host). STATUS: The standalone Realty Mole Property API is legacy
+    and superseded by the RentCast API (https://api.rentcast.io/v1). New
+    integrations should use RentCast; existing Realty Mole users should follow
+    the Realty Mole Migration Guide
+    (https://developers.rentcast.io/reference/realty-mole-migration-guide).
+  termsOfService: https://rapidapi.com/realtymole/api/realty-mole-property-api
+  contact:
+    name: RealtyMole / RentCast
+    url: https://www.rentcast.io/api
+  version: '1.0'
+servers:
+  - url: https://realty-mole-property-api.p.rapidapi.com
+    description: Realty Mole Property API host on RapidAPI (legacy; superseded by RentCast)
+security:
+  - RapidAPIKey: []
+tags:
+  - name: Property Records
+    description: Property record lookups by address or coordinates.
+  - name: Rental Estimate
+    description: AVM long-term rent estimate with comparable properties.
+  - name: Sale Estimate
+    description: AVM sale-price (value) estimate with comparable sales.
+  - name: Listings
+    description: Active for-sale and for-rent listings near a location.
+paths:
+  /properties:
+    get:
+      operationId: getProperties
+      tags:
+        - Property Records
+      summary: Look up property records
+      description: >-
+        Returns property records matching an address or a
+        latitude/longitude pair, including property attributes and the most
+        recent assessor/sale data available for the property.
+      parameters:
+        - name: address
+          in: query
+          required: false
+          description: Full property address (street, city, state, zip).
+          schema:
+            type: string
+        - name: latitude
+          in: query
+          required: false
+          schema:
+            type: number
+            format: double
+        - name: longitude
+          in: query
+          required: false
+          schema:
+            type: number
+            format: double
+        - name: radius
+          in: query
+          required: false
+          description: Search radius in miles when querying by coordinates.
+          schema:
+            type: number
+            format: double
+        - name: limit
+          in: query
+          required: false
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: A list of property records.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PropertyRecord'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+  /rentalPrice:
+    get:
+      operationId: getRentalPrice
+      tags:
+        - Rental Estimate
+      summary: Estimate long-term rent
+      description: >-
+        Returns an estimated long-term monthly rent for the target property,
+        a low/high range, and the comparable rental properties used by the
+        AVM algorithm.
+      parameters:
+        - name: address
+          in: query
+          required: false
+          description: Target property address.
+          schema:
+            type: string
+        - name: latitude
+          in: query
+          required: false
+          schema:
+            type: number
+            format: double
+        - name: longitude
+          in: query
+          required: false
+          schema:
+            type: number
+            format: double
+        - name: propertyType
+          in: query
+          required: false
+          description: Property type, e.g. Single Family, Condo, Apartment, Townhouse.
+          schema:
+            type: string
+        - name: bedrooms
+          in: query
+          required: false
+          schema:
+            type: number
+        - name: bathrooms
+          in: query
+          required: false
+          schema:
+            type: number
+        - name: squareFootage
+          in: query
+          required: false
+          schema:
+            type: number
+        - name: compCount
+          in: query
+          required: false
+          description: Number of comparable properties to return (capped by the API).
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Rent estimate with range and comparables.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RentEstimate'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+  /salePrice:
+    get:
+      operationId: getSalePrice
+      tags:
+        - Sale Estimate
+      summary: Estimate sale price (value)
+      description: >-
+        Returns an estimated market sale price (value) for the target
+        property, a low/high range, and the comparable sold properties used
+        by the AVM algorithm.
+      parameters:
+        - name: address
+          in: query
+          required: false
+          description: Target property address.
+          schema:
+            type: string
+        - name: latitude
+          in: query
+          required: false
+          schema:
+            type: number
+            format: double
+        - name: longitude
+          in: query
+          required: false
+          schema:
+            type: number
+            format: double
+        - name: propertyType
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: bedrooms
+          in: query
+          required: false
+          schema:
+            type: number
+        - name: bathrooms
+          in: query
+          required: false
+          schema:
+            type: number
+        - name: squareFootage
+          in: query
+          required: false
+          schema:
+            type: number
+        - name: compCount
+          in: query
+          required: false
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Sale price estimate with range and comparables.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SaleEstimate'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+  /saleListings:
+    get:
+      operationId: getSaleListings
+      tags:
+        - Listings
+      summary: Active for-sale listings
+      description: >-
+        Returns active for-sale listings near a location (address or
+        latitude/longitude within a radius), including listing price,
+        property attributes, days on market, and listing status.
+      parameters:
+        - name: address
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: latitude
+          in: query
+          required: false
+          schema:
+            type: number
+            format: double
+        - name: longitude
+          in: query
+          required: false
+          schema:
+            type: number
+            format: double
+        - name: radius
+          in: query
+          required: false
+          description: Search radius in miles.
+          schema:
+            type: number
+            format: double
+        - name: limit
+          in: query
+          required: false
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: A list of for-sale listings.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Listing'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+  /rentalListings:
+    get:
+      operationId: getRentalListings
+      tags:
+        - Listings
+      summary: Active for-rent listings
+      description: >-
+        Returns active for-rent listings near a location (address or
+        latitude/longitude within a radius), including listing rent,
+        property attributes, days on market, and listing status.
+      parameters:
+        - name: address
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: latitude
+          in: query
+          required: false
+          schema:
+            type: number
+            format: double
+        - name: longitude
+          in: query
+          required: false
+          schema:
+            type: number
+            format: double
+        - name: radius
+          in: query
+          required: false
+          description: Search radius in miles.
+          schema:
+            type: number
+            format: double
+        - name: limit
+          in: query
+          required: false
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: A list of for-rent listings.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Listing'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+components:
+  securitySchemes:
+    RapidAPIKey:
+      type: apiKey
+      in: header
+      name: X-RapidAPI-Key
+      description: >-
+        RapidAPI subscription key. Requests must also send the header
+        `X-RapidAPI-Host: realty-mole-property-api.p.rapidapi.com`.
+  responses:
+    Unauthorized:
+      description: Missing or invalid RapidAPI key.
+    RateLimited:
+      description: Plan request quota or rate limit exceeded.
+  schemas:
+    PropertyRecord:
+      type: object
+      description: A property record with attributes and last-known sale/assessor data.
+      properties:
+        id:
+          type: string
+        formattedAddress:
+          type: string
+        addressLine1:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        zipCode:
+          type: string
+        county:
+          type: string
+        latitude:
+          type: number
+          format: double
+        longitude:
+          type: number
+          format: double
+        propertyType:
+          type: string
+        bedrooms:
+          type: number
+        bathrooms:
+          type: number
+        squareFootage:
+          type: number
+        lotSize:
+          type: number
+        yearBuilt:
+          type: integer
+        lastSalePrice:
+          type: number
+        lastSaleDate:
+          type: string
+          format: date
+        owner:
+          type: object
+          additionalProperties: true
+        features:
+          type: object
+          additionalProperties: true
+    RentEstimate:
+      type: object
+      description: Long-term rent estimate with range and comparable properties.
+      properties:
+        rent:
+          type: number
+          description: Estimated monthly rent.
+        rentRangeLow:
+          type: number
+        rentRangeHigh:
+          type: number
+        latitude:
+          type: number
+          format: double
+        longitude:
+          type: number
+          format: double
+        listings:
+          type: array
+          description: Comparable rental properties used by the estimate.
+          items:
+            $ref: '#/components/schemas/Comparable'
+    SaleEstimate:
+      type: object
+      description: Sale price (value) estimate with range and comparable sales.
+      properties:
+        price:
+          type: number
+          description: Estimated sale price (value).
+        priceRangeLow:
+          type: number
+        priceRangeHigh:
+          type: number
+        latitude:
+          type: number
+          format: double
+        longitude:
+          type: number
+          format: double
+        listings:
+          type: array
+          description: Comparable sold properties used by the estimate.
+          items:
+            $ref: '#/components/schemas/Comparable'
+    Comparable:
+      type: object
+      description: A comparable property contributing to an estimate.
+      properties:
+        formattedAddress:
+          type: string
+        price:
+          type: number
+        propertyType:
+          type: string
+        bedrooms:
+          type: number
+        bathrooms:
+          type: number
+        squareFootage:
+          type: number
+        latitude:
+          type: number
+          format: double
+        longitude:
+          type: number
+          format: double
+        distance:
+          type: number
+          description: Distance in miles from the target property.
+        daysOld:
+          type: integer
+        correlation:
+          type: number
+          description: Similarity weighting applied to the comparable.
+    Listing:
+      type: object
+      description: An active for-sale or for-rent listing.
+      properties:
+        id:
+          type: string
+        formattedAddress:
+          type: string
+        addressLine1:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        zipCode:
+          type: string
+        latitude:
+          type: number
+          format: double
+        longitude:
+          type: number
+          format: double
+        price:
+          type: number
+          description: Listing price (for sale) or monthly rent (for rent).
+        propertyType:
+          type: string
+        bedrooms:
+          type: number
+        bathrooms:
+          type: number
+        squareFootage:
+          type: number
+        lotSize:
+          type: number
+        yearBuilt:
+          type: integer
+        status:
+          type: string
+        daysOnMarket:
+          type: integer
+        listedDate:
+          type: string
+          format: date
