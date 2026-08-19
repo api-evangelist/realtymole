@@ -1,0 +1,66 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Realty Mole Property Listings Property Records API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-RapidAPI-Key",
+      "value": "{{X-RapidAPI-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Property Records",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Look up property records",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://realty-mole-property-api.p.rapidapi.com/properties",
+            "params": [
+              {
+                "name": "address",
+                "value": "",
+                "type": "query",
+                "description": "Full property address (street, city, state, zip)."
+              },
+              {
+                "name": "latitude",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "longitude",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "radius",
+                "value": "",
+                "type": "query",
+                "description": "Search radius in miles when querying by coordinates."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns property records matching an address or a latitude/longitude pair, including property attributes and the most recent assessor/sale data available for the property."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

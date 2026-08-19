@@ -1,0 +1,82 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Realty Mole Property Listings Rental Estimate API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-RapidAPI-Key",
+      "value": "{{X-RapidAPI-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Rental Estimate",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Estimate long-term rent",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://realty-mole-property-api.p.rapidapi.com/rentalPrice",
+            "params": [
+              {
+                "name": "address",
+                "value": "",
+                "type": "query",
+                "description": "Target property address."
+              },
+              {
+                "name": "latitude",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "longitude",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "propertyType",
+                "value": "",
+                "type": "query",
+                "description": "Property type, e.g. Single Family, Condo, Apartment, Townhouse."
+              },
+              {
+                "name": "bedrooms",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "bathrooms",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "squareFootage",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "compCount",
+                "value": "",
+                "type": "query",
+                "description": "Number of comparable properties to return (capped by the API)."
+              }
+            ]
+          },
+          "docs": "Returns an estimated long-term monthly rent for the target property, a low/high range, and the comparable rental properties used by the AVM algorithm."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

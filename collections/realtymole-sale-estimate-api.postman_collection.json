@@ -1,0 +1,346 @@
+{
+  "item": [
+    {
+      "id": "e424545a-0f0a-4b44-a70e-27be44b35805",
+      "name": "Sale Estimate",
+      "description": {
+        "content": "AVM sale-price (value) estimate with comparable sales.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b5bfb9cd-7024-449d-a957-06e7feaf110c",
+          "name": "Estimate sale price (value)",
+          "request": {
+            "name": "Estimate sale price (value)",
+            "description": {
+              "content": "Returns an estimated market sale price (value) for the target property, a low/high range, and the comparable sold properties used by the AVM algorithm.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "salePrice"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "address",
+                  "value": "<string>",
+                  "description": "Target property address."
+                },
+                {
+                  "disabled": false,
+                  "key": "latitude",
+                  "value": "<double>"
+                },
+                {
+                  "disabled": false,
+                  "key": "longitude",
+                  "value": "<double>"
+                },
+                {
+                  "disabled": false,
+                  "key": "propertyType",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "bedrooms",
+                  "value": "<number>"
+                },
+                {
+                  "disabled": false,
+                  "key": "bathrooms",
+                  "value": "<number>"
+                },
+                {
+                  "disabled": false,
+                  "key": "squareFootage",
+                  "value": "<number>"
+                },
+                {
+                  "disabled": false,
+                  "key": "compCount",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9ed3e861-cbed-4fee-a15f-5e36c02c6c54",
+              "name": "Sale price estimate with range and comparables.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "salePrice"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "address",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "latitude",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "longitude",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "propertyType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "bedrooms",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "bathrooms",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "squareFootage",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "compCount",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-RapidAPI-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"price\": 5428.715024649859,\n  \"priceRangeLow\": 8177.9600984378285,\n  \"priceRangeHigh\": 5160.421862305199,\n  \"latitude\": 6021.721464181434,\n  \"longitude\": 2429.5918565398933,\n  \"listings\": [\n    {\n      \"formattedAddress\": \"string\",\n      \"price\": 6896.39356271103,\n      \"propertyType\": \"string\",\n      \"bedrooms\": 6093.063505546974,\n      \"bathrooms\": 5093.555983853444,\n      \"squareFootage\": 8022.542429207321,\n      \"latitude\": 3306.987850548846,\n      \"longitude\": 8348.906642477581,\n      \"distance\": 4772.516356871764,\n      \"daysOld\": 4117,\n      \"correlation\": 6667.25395234876\n    },\n    {\n      \"formattedAddress\": \"string\",\n      \"price\": 1400.666741540576,\n      \"propertyType\": \"string\",\n      \"bedrooms\": 7907.595969528485,\n      \"bathrooms\": 9354.944292115835,\n      \"squareFootage\": 3791.4158929178766,\n      \"latitude\": 5299.154871976999,\n      \"longitude\": 5043.332108110467,\n      \"distance\": 1387.3163010808464,\n      \"daysOld\": 1332,\n      \"correlation\": 5587.342764119083\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "36b8e1fb-ab1d-4bdf-a9a9-f620d94ad8ef",
+              "name": "Missing or invalid RapidAPI key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "salePrice"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "address",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "latitude",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "longitude",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "propertyType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "bedrooms",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "bathrooms",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "squareFootage",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "compCount",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-RapidAPI-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "498aeca6-839d-4a76-a429-5a0a3a54c3ca",
+              "name": "Plan request quota or rate limit exceeded.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "salePrice"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "address",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "latitude",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "longitude",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "propertyType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "bedrooms",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "bathrooms",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "squareFootage",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "compCount",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-RapidAPI-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://realty-mole-property-api.p.rapidapi.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-RapidAPI-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "b89534cd-e4a6-4ed8-bad8-6f016731b8e4",
+    "name": "Realty Mole Property Listings Sale Estimate API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Realty Mole Property API provides US real-estate and property data: property records, AVM-based rental estimates and sale-price (value) estimates with comparable properties, and active for-sale and for-rent listings, queried by address or latitude/longitude. The API is distributed through RapidAPI and authenticated with RapidAPI headers (X-RapidAPI-Key, X-RapidAPI-Host). STATUS: The standalone Realty Mole Property API is legacy and superseded by the RentCast API (https://api.rentcast.io/v1). New integrations should use RentCast; existing Realty Mole users should follow the Realty Mole Migration Guide (https://developers.rentcast.io/reference/realty-mole-migration-guide).\n\nContact Support:\n Name: RealtyMole / RentCast",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,296 @@
+{
+  "item": [
+    {
+      "id": "d500efbb-c788-4b74-b58e-7a0a1fb4f7a8",
+      "name": "Property Records",
+      "description": {
+        "content": "Property record lookups by address or coordinates.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "bd07d7f7-6cf1-459a-85a3-25cc9ddd4c94",
+          "name": "Look up property records",
+          "request": {
+            "name": "Look up property records",
+            "description": {
+              "content": "Returns property records matching an address or a latitude/longitude pair, including property attributes and the most recent assessor/sale data available for the property.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "properties"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "address",
+                  "value": "<string>",
+                  "description": "Full property address (street, city, state, zip)."
+                },
+                {
+                  "disabled": false,
+                  "key": "latitude",
+                  "value": "<double>"
+                },
+                {
+                  "disabled": false,
+                  "key": "longitude",
+                  "value": "<double>"
+                },
+                {
+                  "disabled": false,
+                  "key": "radius",
+                  "value": "<double>",
+                  "description": "Search radius in miles when querying by coordinates."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "86eee18e-103c-4078-85a7-980a83b38353",
+              "name": "A list of property records.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "properties"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "address",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "latitude",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "longitude",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "radius",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-RapidAPI-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"formattedAddress\": \"string\",\n    \"addressLine1\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"zipCode\": \"string\",\n    \"county\": \"string\",\n    \"latitude\": 6433.946600216781,\n    \"longitude\": 2937.728186618984,\n    \"propertyType\": \"string\",\n    \"bedrooms\": 7419.163976845693,\n    \"bathrooms\": 2495.677469324422,\n    \"squareFootage\": 272.48188892375015,\n    \"lotSize\": 8161.2637334631545,\n    \"yearBuilt\": 5324,\n    \"lastSalePrice\": 5395.37205470507,\n    \"lastSaleDate\": \"2024-06-11\",\n    \"owner\": {\n      \"key_0\": true\n    },\n    \"features\": {\n      \"key_0\": 4253.3567578486145,\n      \"key_1\": 4554.112342272829,\n      \"key_2\": 1178.329829273993,\n      \"key_3\": 8021.240356388818\n    }\n  },\n  {\n    \"id\": \"string\",\n    \"formattedAddress\": \"string\",\n    \"addressLine1\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"zipCode\": \"string\",\n    \"county\": \"string\",\n    \"latitude\": 7586.136155487274,\n    \"longitude\": 8072.769464873281,\n    \"propertyType\": \"string\",\n    \"bedrooms\": 6566.402162979509,\n    \"bathrooms\": 9642.15210666981,\n    \"squareFootage\": 7584.39485842309,\n    \"lotSize\": 7444.507873505034,\n    \"yearBuilt\": 8437,\n    \"lastSalePrice\": 4733.450812484284,\n    \"lastSaleDate\": \"1959-04-03\",\n    \"owner\": {\n      \"key_0\": true,\n      \"key_1\": \"string\",\n      \"key_2\": 6056\n    },\n    \"features\": {\n      \"key_0\": 3095.2125523533036\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6397a077-cedc-40cb-bef1-2b44778b735c",
+              "name": "Missing or invalid RapidAPI key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "properties"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "address",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "latitude",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "longitude",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "radius",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-RapidAPI-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "13c2f9f8-494c-45ff-b1c1-07834c382a11",
+              "name": "Plan request quota or rate limit exceeded.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "properties"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "address",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "latitude",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "longitude",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "radius",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-RapidAPI-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://realty-mole-property-api.p.rapidapi.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-RapidAPI-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "67d7705f-9144-4c38-8b94-676c0b1be359",
+    "name": "Realty Mole Property Listings Property Records API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Realty Mole Property API provides US real-estate and property data: property records, AVM-based rental estimates and sale-price (value) estimates with comparable properties, and active for-sale and for-rent listings, queried by address or latitude/longitude. The API is distributed through RapidAPI and authenticated with RapidAPI headers (X-RapidAPI-Key, X-RapidAPI-Host). STATUS: The standalone Realty Mole Property API is legacy and superseded by the RentCast API (https://api.rentcast.io/v1). New integrations should use RentCast; existing Realty Mole users should follow the Realty Mole Migration Guide (https://developers.rentcast.io/reference/realty-mole-migration-guide).\n\nContact Support:\n Name: RealtyMole / RentCast",
+      "type": "text/plain"
+    }
+  }
+}

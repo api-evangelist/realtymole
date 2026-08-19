@@ -1,0 +1,348 @@
+{
+  "item": [
+    {
+      "id": "8d7a707d-3653-459f-b243-73b8cd0053a3",
+      "name": "Rental Estimate",
+      "description": {
+        "content": "AVM long-term rent estimate with comparable properties.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "04587079-4d6e-46f7-8ba8-16d0d8f93370",
+          "name": "Estimate long-term rent",
+          "request": {
+            "name": "Estimate long-term rent",
+            "description": {
+              "content": "Returns an estimated long-term monthly rent for the target property, a low/high range, and the comparable rental properties used by the AVM algorithm.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rentalPrice"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "address",
+                  "value": "<string>",
+                  "description": "Target property address."
+                },
+                {
+                  "disabled": false,
+                  "key": "latitude",
+                  "value": "<double>"
+                },
+                {
+                  "disabled": false,
+                  "key": "longitude",
+                  "value": "<double>"
+                },
+                {
+                  "disabled": false,
+                  "key": "propertyType",
+                  "value": "<string>",
+                  "description": "Property type, e.g. Single Family, Condo, Apartment, Townhouse."
+                },
+                {
+                  "disabled": false,
+                  "key": "bedrooms",
+                  "value": "<number>"
+                },
+                {
+                  "disabled": false,
+                  "key": "bathrooms",
+                  "value": "<number>"
+                },
+                {
+                  "disabled": false,
+                  "key": "squareFootage",
+                  "value": "<number>"
+                },
+                {
+                  "disabled": false,
+                  "key": "compCount",
+                  "value": "<integer>",
+                  "description": "Number of comparable properties to return (capped by the API)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7280f5a7-6d48-48ed-b5f1-1fe95271c31f",
+              "name": "Rent estimate with range and comparables.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rentalPrice"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "address",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "latitude",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "longitude",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "propertyType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "bedrooms",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "bathrooms",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "squareFootage",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "compCount",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-RapidAPI-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"rent\": 4422.613785251636,\n  \"rentRangeLow\": 5178.719304646906,\n  \"rentRangeHigh\": 9090.387103295294,\n  \"latitude\": 5119.756289981563,\n  \"longitude\": 3323.2513733371006,\n  \"listings\": [\n    {\n      \"formattedAddress\": \"string\",\n      \"price\": 7678.6346680438655,\n      \"propertyType\": \"string\",\n      \"bedrooms\": 532.1049483647422,\n      \"bathrooms\": 4571.53354059175,\n      \"squareFootage\": 505.54588209475116,\n      \"latitude\": 9156.331918039727,\n      \"longitude\": 9875.963197493575,\n      \"distance\": 314.17791604873236,\n      \"daysOld\": 7920,\n      \"correlation\": 6843.211456864984\n    },\n    {\n      \"formattedAddress\": \"string\",\n      \"price\": 4993.86104887289,\n      \"propertyType\": \"string\",\n      \"bedrooms\": 9819.18494019603,\n      \"bathrooms\": 2757.2974588381417,\n      \"squareFootage\": 4982.996113310622,\n      \"latitude\": 6145.667432515587,\n      \"longitude\": 8478.928012051774,\n      \"distance\": 1949.3472479512452,\n      \"daysOld\": 9753,\n      \"correlation\": 7652.9683438236325\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dfbbbbfb-f211-4603-9fb3-d8efc4ac208b",
+              "name": "Missing or invalid RapidAPI key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rentalPrice"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "address",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "latitude",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "longitude",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "propertyType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "bedrooms",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "bathrooms",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "squareFootage",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "compCount",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-RapidAPI-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "75b75bd9-6d1c-46fb-adaa-24382ecd4949",
+              "name": "Plan request quota or rate limit exceeded.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rentalPrice"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "address",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "latitude",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "longitude",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "propertyType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "bedrooms",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "bathrooms",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "squareFootage",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "compCount",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-RapidAPI-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://realty-mole-property-api.p.rapidapi.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-RapidAPI-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "2dcfaca4-b25b-4f8b-86b6-d1f431dd7527",
+    "name": "Realty Mole Property Listings Rental Estimate API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Realty Mole Property API provides US real-estate and property data: property records, AVM-based rental estimates and sale-price (value) estimates with comparable properties, and active for-sale and for-rent listings, queried by address or latitude/longitude. The API is distributed through RapidAPI and authenticated with RapidAPI headers (X-RapidAPI-Key, X-RapidAPI-Host). STATUS: The standalone Realty Mole Property API is legacy and superseded by the RentCast API (https://api.rentcast.io/v1). New integrations should use RentCast; existing Realty Mole users should follow the Realty Mole Migration Guide (https://developers.rentcast.io/reference/realty-mole-migration-guide).\n\nContact Support:\n Name: RealtyMole / RentCast",
+      "type": "text/plain"
+    }
+  }
+}

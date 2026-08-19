@@ -1,0 +1,104 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Realty Mole Property Listings API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-RapidAPI-Key",
+      "value": "{{X-RapidAPI-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Listings",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Active for-sale listings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://realty-mole-property-api.p.rapidapi.com/saleListings",
+            "params": [
+              {
+                "name": "address",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "latitude",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "longitude",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "radius",
+                "value": "",
+                "type": "query",
+                "description": "Search radius in miles."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns active for-sale listings near a location (address or latitude/longitude within a radius), including listing price, property attributes, days on market, and listing status."
+        },
+        {
+          "info": {
+            "name": "Active for-rent listings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://realty-mole-property-api.p.rapidapi.com/rentalListings",
+            "params": [
+              {
+                "name": "address",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "latitude",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "longitude",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "radius",
+                "value": "",
+                "type": "query",
+                "description": "Search radius in miles."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns active for-rent listings near a location (address or latitude/longitude within a radius), including listing rent, property attributes, days on market, and listing status."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

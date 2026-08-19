@@ -1,0 +1,541 @@
+{
+  "item": [
+    {
+      "id": "6a3cec25-7a4f-4f37-a3c7-a0f1014dbc70",
+      "name": "Listings",
+      "description": {
+        "content": "Active for-sale and for-rent listings near a location.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "82259867-d2f9-4355-b238-cac11050a288",
+          "name": "Active for-sale listings",
+          "request": {
+            "name": "Active for-sale listings",
+            "description": {
+              "content": "Returns active for-sale listings near a location (address or latitude/longitude within a radius), including listing price, property attributes, days on market, and listing status.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "saleListings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "address",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "latitude",
+                  "value": "<double>"
+                },
+                {
+                  "disabled": false,
+                  "key": "longitude",
+                  "value": "<double>"
+                },
+                {
+                  "disabled": false,
+                  "key": "radius",
+                  "value": "<double>",
+                  "description": "Search radius in miles."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "208242ef-c53a-475a-b907-78956029f313",
+              "name": "A list of for-sale listings.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "saleListings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "address",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "latitude",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "longitude",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "radius",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-RapidAPI-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"formattedAddress\": \"string\",\n    \"addressLine1\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"zipCode\": \"string\",\n    \"latitude\": 5245.477037715122,\n    \"longitude\": 2443.8775628090893,\n    \"price\": 4547.866135580732,\n    \"propertyType\": \"string\",\n    \"bedrooms\": 5193.310680538226,\n    \"bathrooms\": 4686.519973569499,\n    \"squareFootage\": 4452.451485869205,\n    \"lotSize\": 3607.492157866995,\n    \"yearBuilt\": 3461,\n    \"status\": \"string\",\n    \"daysOnMarket\": 8825,\n    \"listedDate\": \"1955-05-21\"\n  },\n  {\n    \"id\": \"string\",\n    \"formattedAddress\": \"string\",\n    \"addressLine1\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"zipCode\": \"string\",\n    \"latitude\": 1813.796054610317,\n    \"longitude\": 9912.208626209644,\n    \"price\": 4615.228481340997,\n    \"propertyType\": \"string\",\n    \"bedrooms\": 7781.517337253992,\n    \"bathrooms\": 5838.0140256308,\n    \"squareFootage\": 189.78117500170865,\n    \"lotSize\": 7827.481909662084,\n    \"yearBuilt\": 997,\n    \"status\": \"string\",\n    \"daysOnMarket\": 4401,\n    \"listedDate\": \"1962-10-31\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "394a1704-fa33-42e4-a22b-3df08ea84906",
+              "name": "Missing or invalid RapidAPI key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "saleListings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "address",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "latitude",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "longitude",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "radius",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-RapidAPI-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2662c2bf-b4bd-466e-848a-cf6633f13f07",
+              "name": "Plan request quota or rate limit exceeded.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "saleListings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "address",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "latitude",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "longitude",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "radius",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-RapidAPI-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7d58af0e-3af8-4c52-a3a7-1521b012dfdd",
+          "name": "Active for-rent listings",
+          "request": {
+            "name": "Active for-rent listings",
+            "description": {
+              "content": "Returns active for-rent listings near a location (address or latitude/longitude within a radius), including listing rent, property attributes, days on market, and listing status.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rentalListings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "address",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "latitude",
+                  "value": "<double>"
+                },
+                {
+                  "disabled": false,
+                  "key": "longitude",
+                  "value": "<double>"
+                },
+                {
+                  "disabled": false,
+                  "key": "radius",
+                  "value": "<double>",
+                  "description": "Search radius in miles."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6dc80af1-efef-4937-8304-39a49decb5d7",
+              "name": "A list of for-rent listings.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rentalListings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "address",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "latitude",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "longitude",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "radius",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-RapidAPI-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"formattedAddress\": \"string\",\n    \"addressLine1\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"zipCode\": \"string\",\n    \"latitude\": 5245.477037715122,\n    \"longitude\": 2443.8775628090893,\n    \"price\": 4547.866135580732,\n    \"propertyType\": \"string\",\n    \"bedrooms\": 5193.310680538226,\n    \"bathrooms\": 4686.519973569499,\n    \"squareFootage\": 4452.451485869205,\n    \"lotSize\": 3607.492157866995,\n    \"yearBuilt\": 3461,\n    \"status\": \"string\",\n    \"daysOnMarket\": 8825,\n    \"listedDate\": \"1955-05-21\"\n  },\n  {\n    \"id\": \"string\",\n    \"formattedAddress\": \"string\",\n    \"addressLine1\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"zipCode\": \"string\",\n    \"latitude\": 1813.796054610317,\n    \"longitude\": 9912.208626209644,\n    \"price\": 4615.228481340997,\n    \"propertyType\": \"string\",\n    \"bedrooms\": 7781.517337253992,\n    \"bathrooms\": 5838.0140256308,\n    \"squareFootage\": 189.78117500170865,\n    \"lotSize\": 7827.481909662084,\n    \"yearBuilt\": 997,\n    \"status\": \"string\",\n    \"daysOnMarket\": 4401,\n    \"listedDate\": \"1962-10-31\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dc2b0c03-faff-43be-9b72-e40f9e17caf5",
+              "name": "Missing or invalid RapidAPI key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rentalListings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "address",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "latitude",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "longitude",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "radius",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-RapidAPI-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "62f9aa02-e776-42b6-8d42-2d547b0c0c56",
+              "name": "Plan request quota or rate limit exceeded.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rentalListings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "address",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "latitude",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "longitude",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "radius",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-RapidAPI-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://realty-mole-property-api.p.rapidapi.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-RapidAPI-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "0989d89d-5cdd-4a39-a1a4-dbaac1883d88",
+    "name": "Realty Mole Property Listings API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Realty Mole Property API provides US real-estate and property data: property records, AVM-based rental estimates and sale-price (value) estimates with comparable properties, and active for-sale and for-rent listings, queried by address or latitude/longitude. The API is distributed through RapidAPI and authenticated with RapidAPI headers (X-RapidAPI-Key, X-RapidAPI-Host). STATUS: The standalone Realty Mole Property API is legacy and superseded by the RentCast API (https://api.rentcast.io/v1). New integrations should use RentCast; existing Realty Mole users should follow the Realty Mole Migration Guide (https://developers.rentcast.io/reference/realty-mole-migration-guide).\n\nContact Support:\n Name: RealtyMole / RentCast",
+      "type": "text/plain"
+    }
+  }
+}
