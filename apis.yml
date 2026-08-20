@@ -23,6 +23,12 @@ accessModel:
   method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/realtymole.png
 tags:
+- Real-Estate
+- Property Data
+- Rental Estimate
+- Valuation
+- Listings
+tags_raw:
 - Real Estate
 - Property Data
 - Rental Estimate
