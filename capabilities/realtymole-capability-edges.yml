@@ -1,0 +1,26 @@
+slug: realtymole
+provider: RealtyMole
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Real Estate
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 1
+edges:
+- tag: Sale Estimate
+  spec_file: realtymole-sale-estimate-api-openapi.yml
+  capability_id: BC-4970
+  capability_id_l1: BC-4970
+  capability_name: Real Estate Valuation & Appraisal Management
+  confidence: 0.75
+  evidence: 'GET /salePrice getSalePrice "Estimate sale price (value)"; schemas: Comparable, SaleEstimate;
+    "AVM-based ... sale-price (value) estimates with comparable properties"'
+  reason: 'The operation computes an automated value estimate for a property using comparables, which
+    is squarely real-estate valuation. L2 withheld: it straddles comparable curation (.30) and sales-comparison
+    approach application (.40).'

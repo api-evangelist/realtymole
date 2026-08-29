@@ -107,6 +107,9 @@ apis:
   - type: APIReference
     url: https://rapidapi.com/realtymole/api/realty-mole-property-api/details
 common:
+- type: CapabilityMap
+  url: capabilities/realtymole-capability-edges.yml
+  name: RealtyMole Business Capability Map
 - type: AgenticAccess
   url: agentic-access/realtymole-agentic-access.yml
 - type: DomainSecurity
