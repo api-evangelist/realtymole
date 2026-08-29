@@ -8,6 +8,18 @@ description: RealtyMole (Realty Mole Property API) is a US real-estate and prope
   active for-sale and for-rent listings by address or latitude/longitude. RealtyMole
   is the predecessor product to RentCast (rentcast.io); the standalone Realty Mole
   Property API on RapidAPI is legacy and superseded by the RentCast API.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: self-serve
