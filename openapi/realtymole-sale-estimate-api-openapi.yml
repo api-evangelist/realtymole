@@ -1,7 +1,7 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Realty Mole Property Listings Sale Estimate API
-  description: 'The Realty Mole Property API provides US real-estate and property data: property records, AVM-based rental estimates and sale-price (value) estimates with comparable properties, and active for-sale and for-rent listings, queried by address or latitude/longitude. The API is distributed through RapidAPI and authenticated with RapidAPI headers (X-RapidAPI-Key, X-RapidAPI-Host). STATUS: The standalone Realty Mole Property API is legacy and superseded by the RentCast API (https://api.rentcast.io/v1). New integrations should use RentCast; existing Realty Mole users should follow the Realty Mole Migration Guide (https://developers.rentcast.io/reference/realty-mole-migration-guide).'
+  title: Realty Mole Property Sale Estimate API
+  description: 'The Realty Mole Property API provides US real-estate and property data: property records, AVM-based rental estimates and sale-price (value) estimates with comparable properties, and active for-sale and for-rent listings, queried by address or latitude/longitude.'
   termsOfService: https://rapidapi.com/realtymole/api/realty-mole-property-api
   contact:
     name: RealtyMole / RentCast
@@ -79,29 +79,12 @@ paths:
         '429':
           $ref: '#/components/responses/RateLimited'
 components:
+  responses:
+    Unauthorized:
+      description: Missing or invalid RapidAPI key.
+    RateLimited:
+      description: Plan request quota or rate limit exceeded.
   schemas:
-    SaleEstimate:
-      type: object
-      description: Sale price (value) estimate with range and comparable sales.
-      properties:
-        price:
-          type: number
-          description: Estimated sale price (value).
-        priceRangeLow:
-          type: number
-        priceRangeHigh:
-          type: number
-        latitude:
-          type: number
-          format: double
-        longitude:
-          type: number
-          format: double
-        listings:
-          type: array
-          description: Comparable sold properties used by the estimate.
-          items:
-            $ref: '#/components/schemas/Comparable'
     Comparable:
       type: object
       description: A comparable property contributing to an estimate.
@@ -132,11 +115,28 @@ components:
         correlation:
           type: number
           description: Similarity weighting applied to the comparable.
-  responses:
-    RateLimited:
-      description: Plan request quota or rate limit exceeded.
-    Unauthorized:
-      description: Missing or invalid RapidAPI key.
+    SaleEstimate:
+      type: object
+      description: Sale price (value) estimate with range and comparable sales.
+      properties:
+        price:
+          type: number
+          description: Estimated sale price (value).
+        priceRangeLow:
+          type: number
+        priceRangeHigh:
+          type: number
+        latitude:
+          type: number
+          format: double
+        longitude:
+          type: number
+          format: double
+        listings:
+          type: array
+          description: Comparable sold properties used by the estimate.
+          items:
+            $ref: '#/components/schemas/Comparable'
   securitySchemes:
     RapidAPIKey:
       type: apiKey

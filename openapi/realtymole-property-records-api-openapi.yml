@@ -1,7 +1,7 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Realty Mole Property Listings Property Records API
-  description: 'The Realty Mole Property API provides US real-estate and property data: property records, AVM-based rental estimates and sale-price (value) estimates with comparable properties, and active for-sale and for-rent listings, queried by address or latitude/longitude. The API is distributed through RapidAPI and authenticated with RapidAPI headers (X-RapidAPI-Key, X-RapidAPI-Host). STATUS: The standalone Realty Mole Property API is legacy and superseded by the RentCast API (https://api.rentcast.io/v1). New integrations should use RentCast; existing Realty Mole users should follow the Realty Mole Migration Guide (https://developers.rentcast.io/reference/realty-mole-migration-guide).'
+  title: Realty Mole Property Property Records API
+  description: 'The Realty Mole Property API provides US real-estate and property data: property records, AVM-based rental estimates and sale-price (value) estimates with comparable properties, and active for-sale and for-rent listings, queried by address or latitude/longitude.'
   termsOfService: https://rapidapi.com/realtymole/api/realty-mole-property-api
   contact:
     name: RealtyMole / RentCast
@@ -68,6 +68,11 @@ paths:
         '429':
           $ref: '#/components/responses/RateLimited'
 components:
+  responses:
+    Unauthorized:
+      description: Missing or invalid RapidAPI key.
+    RateLimited:
+      description: Plan request quota or rate limit exceeded.
   schemas:
     PropertyRecord:
       type: object
@@ -116,11 +121,6 @@ components:
         features:
           type: object
           additionalProperties: true
-  responses:
-    RateLimited:
-      description: Plan request quota or rate limit exceeded.
-    Unauthorized:
-      description: Missing or invalid RapidAPI key.
   securitySchemes:
     RapidAPIKey:
       type: apiKey
