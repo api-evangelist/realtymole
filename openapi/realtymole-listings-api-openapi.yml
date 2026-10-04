@@ -117,11 +117,6 @@ paths:
         '429':
           $ref: '#/components/responses/RateLimited'
 components:
-  responses:
-    Unauthorized:
-      description: Missing or invalid RapidAPI key.
-    RateLimited:
-      description: Plan request quota or rate limit exceeded.
   schemas:
     Listing:
       type: object
@@ -167,6 +162,11 @@ components:
         listedDate:
           type: string
           format: date
+  responses:
+    Unauthorized:
+      description: Missing or invalid RapidAPI key.
+    RateLimited:
+      description: Plan request quota or rate limit exceeded.
   securitySchemes:
     RapidAPIKey:
       type: apiKey

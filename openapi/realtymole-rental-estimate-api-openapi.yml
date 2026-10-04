@@ -87,28 +87,6 @@ components:
     RateLimited:
       description: Plan request quota or rate limit exceeded.
   schemas:
-    RentEstimate:
-      type: object
-      description: Long-term rent estimate with range and comparable properties.
-      properties:
-        rent:
-          type: number
-          description: Estimated monthly rent.
-        rentRangeLow:
-          type: number
-        rentRangeHigh:
-          type: number
-        latitude:
-          type: number
-          format: double
-        longitude:
-          type: number
-          format: double
-        listings:
-          type: array
-          description: Comparable rental properties used by the estimate.
-          items:
-            $ref: '#/components/schemas/Comparable'
     Comparable:
       type: object
       description: A comparable property contributing to an estimate.
@@ -139,6 +117,28 @@ components:
         correlation:
           type: number
           description: Similarity weighting applied to the comparable.
+    RentEstimate:
+      type: object
+      description: Long-term rent estimate with range and comparable properties.
+      properties:
+        rent:
+          type: number
+          description: Estimated monthly rent.
+        rentRangeLow:
+          type: number
+        rentRangeHigh:
+          type: number
+        latitude:
+          type: number
+          format: double
+        longitude:
+          type: number
+          format: double
+        listings:
+          type: array
+          description: Comparable rental properties used by the estimate.
+          items:
+            $ref: '#/components/schemas/Comparable'
   securitySchemes:
     RapidAPIKey:
       type: apiKey
